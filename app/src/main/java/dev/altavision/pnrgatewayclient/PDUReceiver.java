@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
+import android.util.Base64;
 import android.widget.Toast;
 
 import androidx.preference.PreferenceManager;
