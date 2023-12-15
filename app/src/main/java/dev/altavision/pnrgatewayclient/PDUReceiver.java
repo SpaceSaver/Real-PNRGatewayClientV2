@@ -92,7 +92,7 @@ public class PDUReceiver extends BroadcastReceiver {
                     continue;
                 }
 
-                if (!recMsg.getOriginatingAddress().equals(mPrefs.getString("gateway_address", "<not set>"))) {
+                if (recMsg.getOriginatingAddress() != null && !recMsg.getOriginatingAddress().equals(mPrefs.getString("gateway_address", "<not set>"))) {
                     continue;
                 }
 
