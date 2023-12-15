@@ -98,8 +98,6 @@ public class PDUReceiver extends BroadcastReceiver {
                 //  REG-RESP?v=3;r=72325403;n=+11234567890;s=CA21C50C645469B25F4B65C38A7DCEC56592E038F39489F35C7CD6972D
                 // String messageBody = recMsg.getMessageBody();
 
-                if 
-
                 //Hands the REG-RESP message off to the SMSReceiver to notify the user
                 SMSReceiver.processResponseMessage(parse((byte[]) pdus[i]), context);
 
