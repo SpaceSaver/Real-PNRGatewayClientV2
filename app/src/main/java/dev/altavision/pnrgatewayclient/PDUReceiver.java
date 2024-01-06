@@ -85,23 +85,16 @@ public class PDUReceiver extends BroadcastReceiver {
 
             //Loops through each received SMS
             for (int i = 0; i < pdus.length; i++) {
-                recMsg = SmsMessage.createFromPdu((byte[]) pdus[i]);
-
-                if (mPrefs.getString("gateway_address","").trim().equals("")) {
-                    Toast.makeText(context, "Error: Please set the gateway address in Settings", Toast.LENGTH_SHORT).show();
-                    continue;
-                }
-
-                if (recMsg.getOriginatingAddress() != null && !recMsg.getOriginatingAddress().equals(mPrefs.getString("gateway_address", "<not set>"))) {
-                    continue;
-                }
 
                 //messageBody will include the REG-RESP text--i.e.
                 //  REG-RESP?v=3;r=72325403;n=+11234567890;s=CA21C50C645469B25F4B65C38A7DCEC56592E038F39489F35C7CD6972D
                 // String messageBody = recMsg.getMessageBody();
 
                 //Hands the REG-RESP message off to the SMSReceiver to notify the user
-                SMSReceiver.processResponseMessage(parse((byte[]) pdus[i]), context);
+                String code = parse((byte[]) pdus[i]);
+                if (code != null) {
+                    SMSReceiver.processResponseMessage(code, context);
+                }
 
             }
         }
